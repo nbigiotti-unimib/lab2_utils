@@ -1,7 +1,6 @@
 #!/bin/bash
-ROOT_DIR="ROOT"
 
-bash "lab2_utils/scripts/root_install.sh" "$ROOT_DIR"
+bash "lab2_utils/scripts/root_install.sh"
 
+source root/bin/thisroot.sh
 echo "*** pyROOT successfully loaded!"
-source $ROOT_DIR/bin/thisroot.sh
