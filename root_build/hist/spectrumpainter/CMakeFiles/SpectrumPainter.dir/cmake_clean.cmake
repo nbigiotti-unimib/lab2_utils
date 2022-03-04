@@ -1,0 +1,10 @@
+file(REMOVE_RECURSE
+  "../../lib/libSpectrumPainter.pdb"
+  "../../lib/libSpectrumPainter.so"
+  "CMakeFiles/SpectrumPainter.dir/src/TSpectrum2Painter.cxx.o"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/SpectrumPainter.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

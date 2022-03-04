@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++14 -Wno-implicit-fallthrough -Wno-noexcept-type -pipe  -Wshadow -Wall -W -Woverloaded-virtual -fsigned-char -pthread -O3 -DNDEBUG   -rdynamic CMakeFiles/root.exe.dir/src/rmain.cxx.o  -o ../bin/root.exe  -Wl,-rpath,/home/nicobigio01/colab_root/root_build/lib: ../lib/libRint.so ../lib/libCore.so 

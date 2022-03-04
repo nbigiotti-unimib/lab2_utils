@@ -1,0 +1,10 @@
+file(REMOVE_RECURSE
+  "../../lib/libROOTVecOps.pdb"
+  "../../lib/libROOTVecOps.so"
+  "CMakeFiles/ROOTVecOps.dir/src/RVec.cxx.o"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/ROOTVecOps.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

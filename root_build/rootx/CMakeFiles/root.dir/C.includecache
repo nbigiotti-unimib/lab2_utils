@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^[^.]+$|[.]h$|[.]icc$|[.]hxx$|[.]hpp$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nicobigio01/colab_root/root_src/core/clib/src/strlcpy.c
+ROOT/RConfig.hxx
+-
+unistd.h
+-
+sys/types.h
+-
+string.h
+-
+
+/home/nicobigio01/colab_root/root_src/core/foundation/inc/ROOT/RConfig.hxx
+../RVersion.h
+/home/nicobigio01/colab_root/root_src/core/foundation/inc/RVersion.h
+RConfigure.h
+/home/nicobigio01/colab_root/root_src/core/foundation/inc/ROOT/RConfigure.h
+stdlib.h
+-
+features.h
+-
+AvailabilityMacros.h
+-
+TargetConditionals.h
+-
+
+/home/nicobigio01/colab_root/root_src/core/foundation/inc/RVersion.h
+
+ginclude/RConfigure.h
+

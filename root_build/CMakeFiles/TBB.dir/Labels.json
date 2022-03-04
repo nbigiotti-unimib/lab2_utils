@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/CMakeFiles/TBB"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/CMakeFiles/TBB.rule"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/CMakeFiles/TBB-complete.rule"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/TBB-prefix/src/TBB-stamp/TBB-install.rule"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/TBB-prefix/src/TBB-stamp/TBB-mkdir.rule"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/TBB-prefix/src/TBB-stamp/TBB-download.rule"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/TBB-prefix/src/TBB-stamp/TBB-update.rule"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/TBB-prefix/src/TBB-stamp/TBB-patch.rule"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/TBB-prefix/src/TBB-stamp/TBB-configure.rule"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/TBB-prefix/src/TBB-stamp/TBB-build.rule"
+		},
+		{
+			"file" : "/home/nicobigio01/colab_root/root_build/TBB-prefix/src/TBB-stamp/TBB-tbb2externals.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"TBB"
+		],
+		"name" : "TBB"
+	}
+}

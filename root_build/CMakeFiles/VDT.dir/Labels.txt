@@ -1,0 +1,14 @@
+# Target labels
+ VDT
+# Source files and their labels
+/home/nicobigio01/colab_root/root_build/CMakeFiles/VDT
+/home/nicobigio01/colab_root/root_build/CMakeFiles/VDT.rule
+/home/nicobigio01/colab_root/root_build/CMakeFiles/VDT-complete.rule
+/home/nicobigio01/colab_root/root_build/VDT-prefix/src/VDT-stamp/VDT-install.rule
+/home/nicobigio01/colab_root/root_build/VDT-prefix/src/VDT-stamp/VDT-mkdir.rule
+/home/nicobigio01/colab_root/root_build/VDT-prefix/src/VDT-stamp/VDT-download.rule
+/home/nicobigio01/colab_root/root_build/VDT-prefix/src/VDT-stamp/VDT-update.rule
+/home/nicobigio01/colab_root/root_build/VDT-prefix/src/VDT-stamp/VDT-patch.rule
+/home/nicobigio01/colab_root/root_build/VDT-prefix/src/VDT-stamp/VDT-configure.rule
+/home/nicobigio01/colab_root/root_build/VDT-prefix/src/VDT-stamp/VDT-build.rule
+/home/nicobigio01/colab_root/root_build/VDT-prefix/src/VDT-stamp/VDT-copy2externals.rule

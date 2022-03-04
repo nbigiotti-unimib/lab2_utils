@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^[^.]+$|[.]h$|[.]icc$|[.]hxx$|[.]hpp$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nicobigio01/colab_root/root_src/graf3d/g3d/inc/X3DBuffer.h
+
+/home/nicobigio01/colab_root/root_src/graf3d/g3d/src/X3DBuffer.c
+X3DBuffer.h
+/home/nicobigio01/colab_root/root_src/graf3d/g3d/src/X3DBuffer.h
+../../x3d/src/X3DDefs.h
+/home/nicobigio01/colab_root/root_src/graf3d/x3d/src/X3DDefs.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/nicobigio01/colab_root/root_src/graf3d/x3d/src/X3DDefs.h
+

@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++14 -Wno-implicit-fallthrough -Wno-noexcept-type -pipe  -Wshadow -Wall -W -Woverloaded-virtual -fsigned-char -pthread -Wall -Wextra -Wno-unused-parameter -O3 -DNDEBUG  -rdynamic CMakeFiles/xrdpinls.dir/XrdApps/XrdPinls.cc.o  -o xrdpinls  -Wl,-rpath,::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 

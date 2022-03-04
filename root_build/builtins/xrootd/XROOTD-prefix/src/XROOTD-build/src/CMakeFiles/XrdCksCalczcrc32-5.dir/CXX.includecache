@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nicobigio01/colab_root/root_build/builtins/xrootd/XROOTD-prefix/src/XROOTD/src/XrdCks/XrdCksCalc.hh
+
+/home/nicobigio01/colab_root/root_build/builtins/xrootd/XROOTD-prefix/src/XROOTD/src/XrdCks/XrdCksCalczcrc32.cc
+XrdCks/XrdCksCalc.hh
+/home/nicobigio01/colab_root/root_build/builtins/xrootd/XROOTD-prefix/src/XROOTD/src/XrdCks/XrdCks/XrdCksCalc.hh
+XrdSys/XrdSysError.hh
+/home/nicobigio01/colab_root/root_build/builtins/xrootd/XROOTD-prefix/src/XROOTD/src/XrdCks/XrdSys/XrdSysError.hh
+XrdVersion.hh
+/home/nicobigio01/colab_root/root_build/builtins/xrootd/XROOTD-prefix/src/XROOTD/src/XrdCks/XrdVersion.hh
+cstdint
+-
+zlib.h
+-
+
+/home/nicobigio01/colab_root/root_build/builtins/xrootd/XROOTD-prefix/src/XROOTD/src/XrdSys/XrdSysError.hh
+cstdlib
+-
+unistd.h
+-
+cstring
+-
+strings.h
+-
+cstring
+-
+
+src/XrdVersion.hh
+
