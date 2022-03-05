@@ -1,3 +1,0 @@
-repository='https://github.com/vgvassilev/clad.git'
-module=''
-tag='origin'
