@@ -4,8 +4,8 @@
 # Used to override the compilers specified in the architecture
 # specific Makefiles.
 
-CC    = cc
-CXX   = c++
+CC    = gcc-7
+CXX   = g++-7
 F77   = CMAKE_Fortran_COMPILER-NOTFOUND
-LD    = c++
+LD    = g++-7
 GCCTOOLCHAIN = 
