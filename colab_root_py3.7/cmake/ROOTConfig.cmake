@@ -86,7 +86,7 @@ get_filename_component(ROOT_BINARY_DIR "${ROOT_BINDIR}" REALPATH)
 
 
 # Python version used to build ROOT
-set(ROOT_PYTHON_VERSION 3.7.12)
+set(ROOT_PYTHON_VERSION 3.7.5)
 
 #----------------------------------------------------------------------------
 # Include RootMacros.cmake to get ROOT's CMake macros
@@ -100,7 +100,7 @@ endif()
 
 #----------------------------------------------------------------------------
 # Setup components and options
-set(_root_enabled_options  asimage builtin_afterimage builtin_clang builtin_cling builtin_gl2ps builtin_llvm builtin_lz4 builtin_lzma builtin_nlohmannjson builtin_openui5 builtin_tbb builtin_vdt builtin_xrootd builtin_xxhash builtin_zstd clad dataframe exceptions fftw3 fitsio gdml http imt mathmore mlp minuit2 mysql opengl pyroot roofit rpath runtime_cxxmodules shared ssl tmva tmva-cpu spectrum vdt x11 xml xrootd)
+set(_root_enabled_options  builtin_clang builtin_cling builtin_llvm builtin_lz4 builtin_lzma builtin_nlohmannjson builtin_xxhash builtin_zstd shared)
 set(_root_all_options  alien arrow asimage asserts builtin_afterimage builtin_cfitsio builtin_clang builtin_cling builtin_cppzmq builtin_davix builtin_fftw3 builtin_freetype builtin_ftgl builtin_gl2ps builtin_glew builtin_gsl builtin_llvm builtin_lz4 builtin_lzma builtin_nlohmannjson builtin_openssl builtin_openui5 builtin_pcre builtin_tbb builtin_unuran builtin_vc builtin_vdt builtin_veccore builtin_xrootd builtin_xxhash builtin_zeromq builtin_zlib builtin_zstd ccache distcc cefweb clad cocoa coverage cuda cudnn cxxmodules daos dataframe test_distrdf_pyspark test_distrdf_dask davix dcache dev exceptions fftw3 fitsio fortran gdml gfal gnuinstall gsl_shared gviz http fcgi imt jemalloc libcxx macos_native mathmore memory_termination mlp minuit2 monalisa mpi mysql odbc opengl oracle pgsql pyroot pyroot_legacy pythia6_nolink pythia6 pythia8 qt5web qt6web r roofit roofit_multiprocess roofit_hs3_ryml webgui root7 rpath runtime_cxxmodules shadowpw shared soversion sqlite ssl tcmalloc tmva tmva-cpu tmva-gpu tmva-sofie tmva-pymva tmva-rmva spectrum unuran uring vc vdt veccore vecgeom win_broken_tests winrtdebug x11 xml xrootd xproofd)
 
 foreach(_opt ${_root_enabled_options})

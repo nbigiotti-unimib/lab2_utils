@@ -254,7 +254,7 @@ WebGui.ServerCert:          rootserver.pem
 WebGui.WaitForTmout:        100.0
 # name of executable for firefox and chrome
 WebGui.Chrome:             
-WebGui.Firefox:            /usr/bin/firefox
+WebGui.Firefox:            
 # location of OpenUi5 applications for ROOT like canvas, eve, fitpanel, ...
 #WebGui.RootUi5Path:        $(ROOTSYS)/ui5
 
@@ -598,7 +598,7 @@ XNet.ParStreamsPerPhyConn: 0
 # and related classes (module netxng, libNetxNG.so).
 
 # Use the old xrootd client (libNetx) instead of the new (libNetxNG)
-XNet.UseOldClient: no
+XNet.UseOldClient: yes
 
 # The following controls the verbosity of the TXNetNGFile XRootD client
 #

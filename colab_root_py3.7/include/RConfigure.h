@@ -23,15 +23,15 @@
 #define EXTRAICONPATH ""
 
 #define R__HAS_SETRESUID   /**/
-#define R__HAS_MATHMORE   /**/
+#undef R__HAS_MATHMORE   /**/
 #define R__HAS_PTHREAD    /**/
 #undef R__HAS_CUDA    /**/
-#define R__HAS_XFT    /**/
+#undef R__HAS_XFT    /**/
 #undef R__HAS_COCOA    /**/
 #undef R__HAS_VC    /**/
-#define R__HAS_VDT    /**/
+#undef R__HAS_VDT    /**/
 #undef R__HAS_VECCORE    /**/
-#define R__USE_CXXMODULES   /**/
+#undef R__USE_CXXMODULES   /**/
 #undef R__USE_LIBCXX    /**/
 #undef R__HAS_STD_STRING_VIEW   /**/
 #undef R__CUDA_HAS_STD_STRING_VIEW   /**/
@@ -44,14 +44,14 @@
 #define R__HAS_ATTRIBUTE_ALWAYS_INLINE /**/
 #define R__HAS_ATTRIBUTE_NOINLINE /**/
 #undef R__HAS_HARDWARE_INTERFERENCE_SIZE /**/
-#define R__USE_IMT   /**/
+#undef R__USE_IMT   /**/
 #undef R__COMPLETE_MEM_TERMINATION /**/
 #undef R__HAS_CEFWEB  /**/
 #undef R__HAS_QT5WEB  /**/
 #undef R__HAS_DAVIX  /**/
-#define R__HAS_DATAFRAME /**/
+#undef R__HAS_DATAFRAME /**/
 #undef R__LESS_INCLUDES /**/
-#define R__HAS_TBB /**/
+#undef R__HAS_TBB /**/
 #undef R__HAS_ROOFIT_MULTIPROCESS /**/
 
 #if defined(R__HAS_VECCORE) && defined(R__HAS_VC)
@@ -66,7 +66,7 @@
 #undef R__HAS_DEFAULT_ZSTD  /**/
 #undef R__HAS_CLOUDFLARE_ZLIB /**/
 
-#define R__HAS_TMVACPU /**/
+#undef R__HAS_TMVACPU /**/
 #undef R__HAS_TMVAGPU /**/
 #undef R__HAS_CUDNN /**/
 #undef R__HAS_PYMVA /**/
