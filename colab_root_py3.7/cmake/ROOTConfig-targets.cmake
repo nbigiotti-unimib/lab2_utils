@@ -4,7 +4,7 @@ if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.6)
    message(FATAL_ERROR "CMake >= 2.6.0 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 2.6...3.22)
+cmake_policy(VERSION 2.6...3.21)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -16,7 +16,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_targetsDefined)
 set(_targetsNotDefined)
 set(_expectedTargets)
-foreach(_expectedTarget ROOT::vectorDict ROOT::listDict ROOT::forward_listDict ROOT::dequeDict ROOT::mapDict ROOT::map2Dict ROOT::unordered_mapDict ROOT::multimapDict ROOT::multimap2Dict ROOT::unordered_multimapDict ROOT::setDict ROOT::unordered_setDict ROOT::multisetDict ROOT::unordered_multisetDict ROOT::complexDict ROOT::valarrayDict ROOT::Cling ROOT::MultiProc ROOT::Rint ROOT::Thread ROOT::Imt ROOT::New ROOT::Core ROOT::rmkdepend ROOT::MathCore ROOT::Matrix ROOT::Minuit ROOT::Fumili ROOT::Physics ROOT::Quadp ROOT::Foam ROOT::Smatrix ROOT::SPlot ROOT::GenVector ROOT::ROOTVecOps ROOT::Hist ROOT::HistPainter ROOT::Tree ROOT::TreePlayer ROOT::TreeViewer ROOT::RIO ROOT::SQLIO ROOT::XMLIO ROOT::Net ROOT::RootAuth ROOT::Gpad ROOT::Graf ROOT::Postscript ROOT::Graf3d ROOT::RCsg ROOT::Gui ROOT::Ged ROOT::FitPanel ROOT::GuiBld ROOT::GuiHtml ROOT::Recorder ROOT::SessionViewer ROOT::Proof ROOT::ProofPlayer ROOT::ProofDraw ROOT::ProofBench ROOT::Html ROOT::EG ROOT::Geom ROOT::GeomBuilder ROOT::GeomPainter ROOT::rootn.exe ROOT::roots.exe ROOT::xpdtest ROOT::root.exe ROOT::proofserv.exe ROOT::hadd ROOT::rootnb.exe ROOT::rootcling)
+foreach(_expectedTarget ROOT::vectorDict ROOT::listDict ROOT::forward_listDict ROOT::dequeDict ROOT::mapDict ROOT::map2Dict ROOT::unordered_mapDict ROOT::multimapDict ROOT::multimap2Dict ROOT::unordered_multimapDict ROOT::setDict ROOT::unordered_setDict ROOT::multisetDict ROOT::unordered_multisetDict ROOT::complexDict ROOT::valarrayDict ROOT::Cling ROOT::MultiProc ROOT::Rint ROOT::Thread ROOT::Imt ROOT::New ROOT::Core ROOT::rmkdepend ROOT::MathCore ROOT::MathMore ROOT::Matrix ROOT::Minuit ROOT::Minuit2 ROOT::Fumili ROOT::Physics ROOT::MLP ROOT::Quadp ROOT::Foam ROOT::Smatrix ROOT::SPlot ROOT::GenVector ROOT::Genetic ROOT::FFTW ROOT::ROOTVecOps ROOT::Hist ROOT::HistPainter ROOT::Spectrum ROOT::SpectrumPainter ROOT::Unfold ROOT::Tree ROOT::TreePlayer ROOT::TreeViewer ROOT::ROOTDataFrame ROOT::RIO ROOT::SQLIO ROOT::XMLIO ROOT::XMLParser ROOT::Net ROOT::RootAuth ROOT::SrvAuth ROOT::NetxNG ROOT::RHTTP ROOT::RHTTPSniff ROOT::Gpad ROOT::Graf ROOT::Postscript ROOT::GX11 ROOT::GX11TTF ROOT::ASImage ROOT::ASImageGui ROOT::FITSIO ROOT::Graf3d ROOT::X3d ROOT::RCsg ROOT::Eve ROOT::RGL ROOT::Gviz3d ROOT::Gui ROOT::Ged ROOT::FitPanel ROOT::GuiBld ROOT::GuiHtml ROOT::Recorder ROOT::SessionViewer ROOT::Proof ROOT::ProofPlayer ROOT::ProofDraw ROOT::ProofBench ROOT::Html ROOT::EG ROOT::Geom ROOT::GeomBuilder ROOT::GeomPainter ROOT::Gdml ROOT::root ROOT::rootn.exe ROOT::roots.exe ROOT::xpdtest ROOT::root.exe ROOT::proofserv.exe ROOT::hadd ROOT::rootnb.exe ROOT::rootcling ROOT::cppyy_backend3_7 ROOT::cppyy_backend2_7 ROOT::cppyy3_7 ROOT::cppyy2_7 ROOT::ROOTPythonizations3_7 ROOT::PyROOT3 ROOT::ROOTPythonizations2_7 ROOT::PyROOT2 ROOT::ROOTTPython ROOT::JupyROOT3_7 ROOT::JupyROOT2_7 ROOT::RMySQL ROOT::TMVA ROOT::TMVAGui ROOT::ROOTTMVASofie ROOT::RooBatchCompute ROOT::RooBatchCompute_GENERIC ROOT::RooBatchCompute_SSE4.1 ROOT::RooBatchCompute_AVX ROOT::RooBatchCompute_AVX2 ROOT::RooBatchCompute_AVX512 ROOT::RooFitCommon ROOT::RooFitCore ROOT::RooFit ROOT::RooFitMore ROOT::RooStats ROOT::HistFactory ROOT::hist2workspace ROOT::RooFitRDataFrameHelpers ROOT::RooFitHS3)
   list(APPEND _expectedTargets ${_expectedTarget})
   if(NOT TARGET ${_expectedTarget})
     list(APPEND _targetsNotDefined ${_expectedTarget})
@@ -263,7 +263,16 @@ add_library(ROOT::MathCore SHARED IMPORTED)
 set_target_properties(ROOT::MathCore PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_14"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "ROOT::Core"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::Imt"
+)
+
+# Create imported target ROOT::MathMore
+add_library(ROOT::MathMore SHARED IMPORTED)
+
+set_target_properties(ROOT::MathMore PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::MathCore"
 )
 
 # Create imported target ROOT::Matrix
@@ -284,6 +293,15 @@ set_target_properties(ROOT::Minuit PROPERTIES
   INTERFACE_LINK_LIBRARIES "ROOT::Graf;ROOT::Hist;ROOT::Matrix;ROOT::MathCore"
 )
 
+# Create imported target ROOT::Minuit2
+add_library(ROOT::Minuit2 SHARED IMPORTED)
+
+set_target_properties(ROOT::Minuit2 PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::MathCore;ROOT::Hist"
+)
+
 # Create imported target ROOT::Fumili
 add_library(ROOT::Fumili SHARED IMPORTED)
 
@@ -300,6 +318,15 @@ set_target_properties(ROOT::Physics PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_14"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
   INTERFACE_LINK_LIBRARIES "ROOT::Matrix;ROOT::MathCore"
+)
+
+# Create imported target ROOT::MLP
+add_library(ROOT::MLP SHARED IMPORTED)
+
+set_target_properties(ROOT::MLP PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Hist;ROOT::Matrix;ROOT::Tree;ROOT::Graf;ROOT::Gpad;ROOT::TreePlayer;ROOT::MathCore"
 )
 
 # Create imported target ROOT::Quadp
@@ -347,6 +374,24 @@ set_target_properties(ROOT::GenVector PROPERTIES
   INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::MathCore"
 )
 
+# Create imported target ROOT::Genetic
+add_library(ROOT::Genetic SHARED IMPORTED)
+
+set_target_properties(ROOT::Genetic PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::MathCore;ROOT::TMVA"
+)
+
+# Create imported target ROOT::FFTW
+add_library(ROOT::FFTW SHARED IMPORTED)
+
+set_target_properties(ROOT::FFTW PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::MathCore"
+)
+
 # Create imported target ROOT::ROOTVecOps
 add_library(ROOT::ROOTVecOps SHARED IMPORTED)
 
@@ -374,13 +419,40 @@ set_target_properties(ROOT::HistPainter PROPERTIES
   INTERFACE_LINK_LIBRARIES "ROOT::Gpad;ROOT::Graf;ROOT::Hist;ROOT::MathCore;ROOT::Matrix"
 )
 
+# Create imported target ROOT::Spectrum
+add_library(ROOT::Spectrum SHARED IMPORTED)
+
+set_target_properties(ROOT::Spectrum PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Hist;ROOT::Matrix"
+)
+
+# Create imported target ROOT::SpectrumPainter
+add_library(ROOT::SpectrumPainter SHARED IMPORTED)
+
+set_target_properties(ROOT::SpectrumPainter PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Graf;ROOT::Hist;ROOT::Gpad"
+)
+
+# Create imported target ROOT::Unfold
+add_library(ROOT::Unfold SHARED IMPORTED)
+
+set_target_properties(ROOT::Unfold PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Hist;ROOT::XMLParser;ROOT::Matrix"
+)
+
 # Create imported target ROOT::Tree
 add_library(ROOT::Tree SHARED IMPORTED)
 
 set_target_properties(ROOT::Tree PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_14"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "ROOT::Net;ROOT::RIO;ROOT::MathCore"
+  INTERFACE_LINK_LIBRARIES "ROOT::Imt;ROOT::Net;ROOT::RIO;ROOT::MathCore"
 )
 
 # Create imported target ROOT::TreePlayer
@@ -389,7 +461,7 @@ add_library(ROOT::TreePlayer SHARED IMPORTED)
 set_target_properties(ROOT::TreePlayer PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_14"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "ROOT::Gpad;ROOT::Graf;ROOT::Graf3d;ROOT::Hist;ROOT::MathCore;ROOT::RIO;ROOT::Tree;ROOT::MultiProc"
+  INTERFACE_LINK_LIBRARIES "ROOT::Gpad;ROOT::Graf;ROOT::Graf3d;ROOT::Hist;ROOT::Imt;ROOT::MathCore;ROOT::RIO;ROOT::Tree;ROOT::MultiProc"
 )
 
 # Create imported target ROOT::TreeViewer
@@ -399,6 +471,15 @@ set_target_properties(ROOT::TreeViewer PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_14"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
   INTERFACE_LINK_LIBRARIES "ROOT::Ged;ROOT::Gui;ROOT::TreePlayer"
+)
+
+# Create imported target ROOT::ROOTDataFrame
+add_library(ROOT::ROOTDataFrame SHARED IMPORTED)
+
+set_target_properties(ROOT::ROOTDataFrame PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Tree;ROOT::TreePlayer;ROOT::Hist;ROOT::RIO;ROOT::ROOTVecOps;ROOT::Imt"
 )
 
 # Create imported target ROOT::RIO
@@ -428,6 +509,15 @@ set_target_properties(ROOT::XMLIO PROPERTIES
   INTERFACE_LINK_LIBRARIES "ROOT::RIO"
 )
 
+# Create imported target ROOT::XMLParser
+add_library(ROOT::XMLParser SHARED IMPORTED)
+
+set_target_properties(ROOT::XMLParser PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core"
+)
+
 # Create imported target ROOT::Net
 add_library(ROOT::Net SHARED IMPORTED)
 
@@ -444,6 +534,43 @@ set_target_properties(ROOT::RootAuth PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_14"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
   INTERFACE_LINK_LIBRARIES "ROOT::Net;ROOT::RIO"
+)
+
+# Create imported target ROOT::SrvAuth
+add_library(ROOT::SrvAuth SHARED IMPORTED)
+
+set_target_properties(ROOT::SrvAuth PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Net"
+)
+
+# Create imported target ROOT::NetxNG
+add_library(ROOT::NetxNG SHARED IMPORTED)
+
+set_target_properties(ROOT::NetxNG PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Net;ROOT::RIO;ROOT::Thread"
+)
+
+# Create imported target ROOT::RHTTP
+add_library(ROOT::RHTTP SHARED IMPORTED)
+
+set_target_properties(ROOT::RHTTP PROPERTIES
+  INTERFACE_COMPILE_DEFINITIONS "USE_WEBSOCKET;NO_SSL_DL;HTTP_WITHOUT_FASTCGI"
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::RIO;ROOT::Thread;ROOT::Graf"
+)
+
+# Create imported target ROOT::RHTTPSniff
+add_library(ROOT::RHTTPSniff SHARED IMPORTED)
+
+set_target_properties(ROOT::RHTTPSniff PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Gpad;ROOT::Graf;ROOT::Hist;ROOT::RHTTP;ROOT::RIO;ROOT::Thread;ROOT::Tree;ROOT::XMLIO"
 )
 
 # Create imported target ROOT::Gpad
@@ -473,6 +600,51 @@ set_target_properties(ROOT::Postscript PROPERTIES
   INTERFACE_LINK_LIBRARIES "ROOT::Graf"
 )
 
+# Create imported target ROOT::GX11
+add_library(ROOT::GX11 SHARED IMPORTED)
+
+set_target_properties(ROOT::GX11 PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::MathCore"
+)
+
+# Create imported target ROOT::GX11TTF
+add_library(ROOT::GX11TTF SHARED IMPORTED)
+
+set_target_properties(ROOT::GX11TTF PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::GX11;ROOT::Graf"
+)
+
+# Create imported target ROOT::ASImage
+add_library(ROOT::ASImage SHARED IMPORTED)
+
+set_target_properties(ROOT::ASImage PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::Graf"
+)
+
+# Create imported target ROOT::ASImageGui
+add_library(ROOT::ASImageGui SHARED IMPORTED)
+
+set_target_properties(ROOT::ASImageGui PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Gui;ROOT::ASImage"
+)
+
+# Create imported target ROOT::FITSIO
+add_library(ROOT::FITSIO SHARED IMPORTED)
+
+set_target_properties(ROOT::FITSIO PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Gpad;ROOT::Graf;ROOT::Hist;ROOT::Matrix"
+)
+
 # Create imported target ROOT::Graf3d
 add_library(ROOT::Graf3d SHARED IMPORTED)
 
@@ -482,6 +654,15 @@ set_target_properties(ROOT::Graf3d PROPERTIES
   INTERFACE_LINK_LIBRARIES "ROOT::Gpad;ROOT::Graf;ROOT::Hist;ROOT::MathCore"
 )
 
+# Create imported target ROOT::X3d
+add_library(ROOT::X3d SHARED IMPORTED)
+
+set_target_properties(ROOT::X3d PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Graf3d;ROOT::Gui"
+)
+
 # Create imported target ROOT::RCsg
 add_library(ROOT::RCsg SHARED IMPORTED)
 
@@ -489,6 +670,33 @@ set_target_properties(ROOT::RCsg PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_14"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
   INTERFACE_LINK_LIBRARIES "ROOT::MathCore"
+)
+
+# Create imported target ROOT::Eve
+add_library(ROOT::Eve SHARED IMPORTED)
+
+set_target_properties(ROOT::Eve PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::EG;ROOT::Ged;ROOT::Geom;ROOT::RGL;ROOT::Physics"
+)
+
+# Create imported target ROOT::RGL
+add_library(ROOT::RGL SHARED IMPORTED)
+
+set_target_properties(ROOT::RGL PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Hist;ROOT::Gui;ROOT::Ged;ROOT::RCsg"
+)
+
+# Create imported target ROOT::Gviz3d
+add_library(ROOT::Gviz3d SHARED IMPORTED)
+
+set_target_properties(ROOT::Gviz3d PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Gui;ROOT::Ged;ROOT::Geom;ROOT::RGL"
 )
 
 # Create imported target ROOT::Gui
@@ -635,6 +843,18 @@ set_target_properties(ROOT::GeomPainter PROPERTIES
   INTERFACE_LINK_LIBRARIES "ROOT::Geom;ROOT::Gpad;ROOT::Graf3d;ROOT::Hist;ROOT::RIO;ROOT::Tree"
 )
 
+# Create imported target ROOT::Gdml
+add_library(ROOT::Gdml SHARED IMPORTED)
+
+set_target_properties(ROOT::Gdml PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Geom;ROOT::XMLIO;ROOT::Hist;ROOT::RIO"
+)
+
+# Create imported target ROOT::root
+add_executable(ROOT::root IMPORTED)
+
 # Create imported target ROOT::rootn.exe
 add_executable(ROOT::rootn.exe IMPORTED)
 
@@ -659,8 +879,260 @@ add_executable(ROOT::rootnb.exe IMPORTED)
 # Create imported target ROOT::rootcling
 add_executable(ROOT::rootcling IMPORTED)
 
-if(CMAKE_VERSION VERSION_LESS 2.8.12)
-  message(FATAL_ERROR "This file relies on consumers using CMake 2.8.12 or greater.")
+# Create imported target ROOT::cppyy_backend3_7
+add_library(ROOT::cppyy_backend3_7 SHARED IMPORTED)
+
+set_target_properties(ROOT::cppyy_backend3_7 PROPERTIES
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;dl"
+)
+
+# Create imported target ROOT::cppyy_backend2_7
+add_library(ROOT::cppyy_backend2_7 SHARED IMPORTED)
+
+set_target_properties(ROOT::cppyy_backend2_7 PROPERTIES
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;dl"
+)
+
+# Create imported target ROOT::cppyy3_7
+add_library(ROOT::cppyy3_7 SHARED IMPORTED)
+
+set_target_properties(ROOT::cppyy3_7 PROPERTIES
+  INTERFACE_INCLUDE_DIRECTORIES "/usr/include/python3.7m"
+  INTERFACE_LINK_LIBRARIES "-Wl,--unresolved-symbols=ignore-all;ROOT::cppyy_backend3_7"
+  INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "/usr/include/python3.7m"
+)
+
+# Create imported target ROOT::cppyy2_7
+add_library(ROOT::cppyy2_7 SHARED IMPORTED)
+
+set_target_properties(ROOT::cppyy2_7 PROPERTIES
+  INTERFACE_INCLUDE_DIRECTORIES "/usr/include/python2.7"
+  INTERFACE_LINK_LIBRARIES "-Wl,--unresolved-symbols=ignore-all;ROOT::cppyy_backend2_7"
+  INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "/usr/include/python2.7"
+)
+
+# Create imported target ROOT::ROOTPythonizations3_7
+add_library(ROOT::ROOTPythonizations3_7 SHARED IMPORTED)
+
+set_target_properties(ROOT::ROOTPythonizations3_7 PROPERTIES
+  INTERFACE_LINK_LIBRARIES "-Wl,--unresolved-symbols=ignore-all;ROOT::Core;ROOT::Tree;ROOT::cppyy3_7"
+)
+
+# Create imported target ROOT::PyROOT3
+add_library(ROOT::PyROOT3 INTERFACE IMPORTED)
+
+set_target_properties(ROOT::PyROOT3 PROPERTIES
+  INTERFACE_LINK_LIBRARIES "ROOT::cppyy_backend3_7;ROOT::cppyy3_7;ROOT::ROOTPythonizations3_7"
+)
+
+# Create imported target ROOT::ROOTPythonizations2_7
+add_library(ROOT::ROOTPythonizations2_7 SHARED IMPORTED)
+
+set_target_properties(ROOT::ROOTPythonizations2_7 PROPERTIES
+  INTERFACE_LINK_LIBRARIES "-Wl,--unresolved-symbols=ignore-all;ROOT::Core;ROOT::Tree;ROOT::cppyy2_7"
+)
+
+# Create imported target ROOT::PyROOT2
+add_library(ROOT::PyROOT2 INTERFACE IMPORTED)
+
+set_target_properties(ROOT::PyROOT2 PROPERTIES
+  INTERFACE_LINK_LIBRARIES "ROOT::cppyy_backend2_7;ROOT::cppyy2_7;ROOT::ROOTPythonizations2_7"
+)
+
+# Create imported target ROOT::ROOTTPython
+add_library(ROOT::ROOTTPython SHARED IMPORTED)
+
+set_target_properties(ROOT::ROOTTPython PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core"
+)
+
+# Create imported target ROOT::JupyROOT3_7
+add_library(ROOT::JupyROOT3_7 SHARED IMPORTED)
+
+set_target_properties(ROOT::JupyROOT3_7 PROPERTIES
+  INTERFACE_LINK_LIBRARIES "-Wl,--unresolved-symbols=ignore-all;ROOT::Core"
+)
+
+# Create imported target ROOT::JupyROOT2_7
+add_library(ROOT::JupyROOT2_7 SHARED IMPORTED)
+
+set_target_properties(ROOT::JupyROOT2_7 PROPERTIES
+  INTERFACE_LINK_LIBRARIES "-Wl,--unresolved-symbols=ignore-all;ROOT::Core"
+)
+
+# Create imported target ROOT::RMySQL
+add_library(ROOT::RMySQL SHARED IMPORTED)
+
+set_target_properties(ROOT::RMySQL PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/mysql"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::Net;ROOT::RIO;-L/usr/lib/x86_64-linux-gnu -lmysqlclient -lpthread -lz -lm -lrt -latomic -lssl -lcrypto -ldl"
+)
+
+# Create imported target ROOT::TMVA
+add_library(ROOT::TMVA SHARED IMPORTED)
+
+set_target_properties(ROOT::TMVA PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::TreePlayer;ROOT::Tree;ROOT::Hist;ROOT::Matrix;ROOT::Minuit;ROOT::MLP;ROOT::MathCore;ROOT::Core;ROOT::RIO;ROOT::XMLIO;ROOT::ROOTDataFrame;ROOT::ROOTVecOps;ROOT::Imt"
+)
+
+# Create imported target ROOT::TMVAGui
+add_library(ROOT::TMVAGui SHARED IMPORTED)
+
+set_target_properties(ROOT::TMVAGui PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::RIO;ROOT::Hist;ROOT::Tree;ROOT::TreeViewer;ROOT::MLP;ROOT::Minuit;ROOT::XMLIO;ROOT::TMVA;ROOT::Gui;ROOT::HistPainter;ROOT::Core"
+)
+
+# Create imported target ROOT::ROOTTMVASofie
+add_library(ROOT::ROOTTMVASofie SHARED IMPORTED)
+
+set_target_properties(ROOT::ROOTTMVASofie PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::TMVA"
+)
+
+# Create imported target ROOT::RooBatchCompute
+add_library(ROOT::RooBatchCompute SHARED IMPORTED)
+
+set_target_properties(ROOT::RooBatchCompute PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::MathCore;ROOT::Imt"
+)
+
+# Create imported target ROOT::RooBatchCompute_GENERIC
+add_library(ROOT::RooBatchCompute_GENERIC SHARED IMPORTED)
+
+set_target_properties(ROOT::RooBatchCompute_GENERIC PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::RooBatchCompute"
+)
+
+# Create imported target ROOT::RooBatchCompute_SSE4.1
+add_library(ROOT::RooBatchCompute_SSE4.1 SHARED IMPORTED)
+
+set_target_properties(ROOT::RooBatchCompute_SSE4.1 PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::RooBatchCompute"
+)
+
+# Create imported target ROOT::RooBatchCompute_AVX
+add_library(ROOT::RooBatchCompute_AVX SHARED IMPORTED)
+
+set_target_properties(ROOT::RooBatchCompute_AVX PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::RooBatchCompute"
+)
+
+# Create imported target ROOT::RooBatchCompute_AVX2
+add_library(ROOT::RooBatchCompute_AVX2 SHARED IMPORTED)
+
+set_target_properties(ROOT::RooBatchCompute_AVX2 PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::RooBatchCompute"
+)
+
+# Create imported target ROOT::RooBatchCompute_AVX512
+add_library(ROOT::RooBatchCompute_AVX512 SHARED IMPORTED)
+
+set_target_properties(ROOT::RooBatchCompute_AVX512 PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::RooBatchCompute"
+)
+
+# Create imported target ROOT::RooFitCommon
+add_library(ROOT::RooFitCommon SHARED IMPORTED)
+
+set_target_properties(ROOT::RooFitCommon PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core"
+)
+
+# Create imported target ROOT::RooFitCore
+add_library(ROOT::RooFitCore SHARED IMPORTED)
+
+set_target_properties(ROOT::RooFitCore PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_COMPILE_OPTIONS "-fno-math-errno"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::Hist;ROOT::Graf;ROOT::Matrix;ROOT::Tree;ROOT::Minuit;ROOT::Minuit2;ROOT::RIO;ROOT::MathCore;ROOT::Foam;ROOT::Smatrix"
+)
+
+# Create imported target ROOT::RooFit
+add_library(ROOT::RooFit SHARED IMPORTED)
+
+set_target_properties(ROOT::RooFit PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_COMPILE_OPTIONS "-fno-math-errno"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::RooFitCore;ROOT::Tree;ROOT::RIO;ROOT::Matrix;ROOT::MathCore"
+)
+
+# Create imported target ROOT::RooFitMore
+add_library(ROOT::RooFitMore SHARED IMPORTED)
+
+set_target_properties(ROOT::RooFitMore PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_COMPILE_OPTIONS "-fno-math-errno"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::MathMore;ROOT::Core;ROOT::RooFitCore;ROOT::RooFit;ROOT::Hist;ROOT::Matrix;ROOT::Tree;ROOT::Minuit;ROOT::RIO;ROOT::MathCore;ROOT::Foam"
+)
+
+# Create imported target ROOT::RooStats
+add_library(ROOT::RooStats SHARED IMPORTED)
+
+set_target_properties(ROOT::RooStats PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::Core;ROOT::RooFit;ROOT::RooFitCore;ROOT::Tree;ROOT::RIO;ROOT::Hist;ROOT::Matrix;ROOT::MathCore;ROOT::Minuit;ROOT::Foam;ROOT::Graf;ROOT::Gpad"
+)
+
+# Create imported target ROOT::HistFactory
+add_library(ROOT::HistFactory SHARED IMPORTED)
+
+set_target_properties(ROOT::HistFactory PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_COMPILE_OPTIONS "-fno-math-errno"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::RooFit;ROOT::RooFitCore;ROOT::Tree;ROOT::RIO;ROOT::Hist;ROOT::Matrix;ROOT::MathCore;ROOT::Graf;ROOT::Gpad;ROOT::RooStats;ROOT::XMLParser"
+)
+
+# Create imported target ROOT::hist2workspace
+add_executable(ROOT::hist2workspace IMPORTED)
+
+# Create imported target ROOT::RooFitRDataFrameHelpers
+add_library(ROOT::RooFitRDataFrameHelpers SHARED IMPORTED)
+
+set_target_properties(ROOT::RooFitRDataFrameHelpers PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::ROOTDataFrame;ROOT::RooFitCore"
+)
+
+# Create imported target ROOT::RooFitHS3
+add_library(ROOT::RooFitHS3 SHARED IMPORTED)
+
+set_target_properties(ROOT::RooFitHS3 PROPERTIES
+  INTERFACE_COMPILE_FEATURES "cxx_std_14"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "ROOT::RooFit;ROOT::RooFitCore;ROOT::RooStats;ROOT::HistFactory"
+)
+
+if(CMAKE_VERSION VERSION_LESS 3.0.0)
+  message(FATAL_ERROR "This file relies on consumers using CMake 3.0.0 or greater.")
 endif()
 
 # Load information for each installed configuration.
